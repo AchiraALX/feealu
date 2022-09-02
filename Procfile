@@ -1,1 +1,1 @@
-web: gunicorn fees_ALU.wsgi
+web: gunicorn feealu.wsgi
