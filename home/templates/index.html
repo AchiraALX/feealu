@@ -1,0 +1,328 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--- favicon -->
+    <link rel="icon" href="{% static 'images/favicon1.png' %}">
+    <link rel="stylesheet" href="{% static 'home/main9.css' %}">
+    <link rel="stylesheet" href="https://jacobsa.w3spaces.com/main9.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <!-- w3schools css-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--- font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!--- owl carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+    <title>Award Jacob Website</title>
+</head>
+<header id="header">
+        <a href="{% url 'home' %}">
+            <div id="heaven_line">
+                &#9776;
+            </div>
+        </a>
+        <h2 style="margin: 4px 0px 0px 40px;">
+            Welcome.
+        </h3>
+        <div id="community_btn">
+            <a href=" {% url 'about' %} ">
+                <div>
+                    🤹‍♂️ About Me 
+                </div>
+            </a>
+                &nbsp; | &nbsp;
+            <a href=" {% url 'comm' %} ">
+                <div>
+                    👨‍👩‍👧‍👧 Community.
+                </div>
+            </a>
+
+        </div>
+            <button id="d_arrow">
+                <!-- down arrow -->
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </button>
+
+        <script>
+            /* change the d_arrow background color when hovering over it */
+            $('#d_arrow').hover(function(){
+                $(this).css('background-color', '#f2f2f2');
+            }, function(){
+                $(this).css('background-color', '#fff');
+            });
+            /* show community button > 600px */
+            $(window).resize(function(){
+                if($(window).width() > 800){
+                    $("#community_btn").show();
+                }
+                else{
+                    $("#community_btn").hide();
+                }
+            });
+
+            /* flex row community btn when screen is more than 600px */
+            $(window).resize(function(){
+                if($(window).width() > 800){
+                    $("#community_btn").css("display", "flex");
+                }
+                else{
+                    $("#community_btn").css("display", "block");
+                }
+            });
+
+            /* hide community button < 600px */
+            $(window).resize(function(){
+                if($(window).width() < 800){
+                    $("#community_btn").hide();
+                }
+                else{
+                    $("#community_btn").show();
+                }
+            });
+
+        </script>
+</header>
+<script>
+    /*var prev_scroll_pos = window.pageYOffset;
+    window.onscroll = function () {
+        var current_scroll_pos = window.pageYOffset;
+        if (prev_scroll_pos > current_scroll_pos) {
+            document.getElementById("header").style.top = "0";
+        }
+        else {
+            document.getElementById("header").style.top = "-100%"
+        }
+
+        prev_scroll_pos = current_scroll_pos;
+    } */
+</script>
+<main>
+    <canvas id="canvas1">
+        <script>
+            //var canvas1 = document.getElementById("canvas1");
+            //var ctx1 = canvas1.getContext("2d");
+            //canvas1.style.height = "100%";
+            //canvas1.style.width = "100%";
+            //canvas1.style.position = "fixed"
+            //canvas1.style.zIndex = "-2"
+//
+            //setInterval(() => {
+            //    function getRandomInt(min, max) {
+            //        return Math.floor(Math.random() * (max - min + 1)) + min;
+            //    }
+//
+            //    var top = getRandomInt(0, canvas1.height);
+            //    var left = getRandomInt(0, canvas1.width);
+//
+            //    /* add image to canvas */
+            //    var img = new Image();
+//
+            //    /* resize image */
+            //    var width = getRandomInt(10, 15);
+            //    var height = width;
+            //    img.width = width;
+            //    img.height = height;
+//
+            //    img.src = "file:///C:/Users/ADMIN/Desktop/admin/Orginal%20(20).jpg";
+            //    img.alt = "Bubbleshot."
+            //    img.onload = function () {
+            //        ctx1.drawImage(img, left, top, width, height);
+            //    }
+            //}, 100); 
+        </script>
+    </canvas>
+    <canvas id="canvas">
+        <script>
+                var canvas = document.getElementById("canvas");
+                canvas.style.zIndex = "-1"
+                /* position: fixed; */
+                canvas.style.position = "fixed"
+                
+                /* set canvas height and width */
+                canvas.height = 250;
+                canvas.width = 250;
+
+                /* scaling the canvas by 1.6 */
+                canvas.style.transform = "scale(0.3)"
+
+                /* center canvas */
+                canvas.style.bottom = "5%";
+                canvas.style.left = "50%";
+                canvas.style.transform = "translateX(-50%)"
+
+                /* set canvas opacity */
+                canvas.style.opacity = "0.1";
+
+                var ctx = canvas.getContext("2d");
+                var radius = canvas.height / 2;
+                ctx.translate(radius, radius);
+                radius = radius * 0.90
+                setInterval(drawClock, 1000);
+                function drawClock() {
+                    drawFace(ctx, radius);
+                    drawNumbers(ctx, radius);
+                    drawTime(ctx, radius);
+                    drawHand(ctx, pos, length, width);
+                }
+                function drawFace(ctx, radius) {
+                    var grad;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, radius, 0, 2*Math.PI);
+                    ctx.fillStyle = 'white';
+                    ctx.fill();
+                    grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+                    grad.addColorStop(0, '#333');
+                    grad.addColorStop(0.5, 'white');
+                    grad.addColorStop(1, '#333');
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = radius*0.1;
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+                    ctx.fillStyle = '#333';
+                    ctx.fill();
+                }
+                function drawNumbers(ctx, radius) {
+                    var ang;
+                    var num;
+                    ctx.font = radius*0.15 + "px arial";
+                    ctx.textBaseline="middle";
+                    ctx.textAlign="center";
+                    for(num = 1; num < 13; num++){
+                        ang = num * Math.PI / 6;
+                        ctx.rotate(ang);
+                        ctx.translate(0, -radius*0.85);
+                        ctx.rotate(-ang);
+                        ctx.fillText(num.toString(), 0, 0);
+                        ctx.rotate(ang);
+                        ctx.translate(0, radius*0.85);
+                        ctx.rotate(-ang);
+                    }
+                }
+                function drawTime(ctx, radius){
+                    var now = new Date();
+                    var hour = now.getHours();
+                    var minute = now.getMinutes();
+                    var second = now.getSeconds();
+                    //hour
+                    hour=hour%12;
+                    hour=(hour*Math.PI/6)+
+                    (minute*Math.PI/(6*60))+
+                    (second*Math.PI/(360*60));
+                    drawHand(ctx, hour, radius*0.5, radius*0.07);
+                    //minute
+                    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+                    drawHand(ctx, minute, radius*0.8, radius*0.07);
+                    // second
+                    second=(second*Math.PI/30);
+                    drawHand(ctx, second, radius*0.9, radius*0.02);
+                }
+                function drawHand(ctx, pos, length, width) {
+                    ctx.beginPath();
+                    ctx.lineWidth = width;
+                    ctx.lineCap = "round";
+                    ctx.moveTo(0,0);
+                    ctx.rotate(pos);
+                    ctx.lineTo(0, -length);
+                    ctx.stroke();
+                    ctx.rotate(-pos);
+                }
+        </script>
+    </canvas>
+    <script>
+
+
+    </script>
+    <body onload="talk()">
+        </div>
+        <div id="body">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+
+    </body>
+</main>
+<script>
+    $(document).ready(function(){
+        $("#d_arrow").click(function(){
+            
+            $("#community_btn").slideToggle();
+        });
+        $("#community_comment_btn").click(function(){
+            /* smooth toggling of comment_text_area */
+            $("#comment_text_area").slideToggle();
+        });
+    });
+</script>
+<footer>
+    <div id="footer_body">
+        <img src="https://jacobsa.w3spaces.com/imgbin_soap-bubble-blue-png.png" alt="">
+
+        <div class="container w3-margin" style="color: honeydew;">
+
+            <a href="mailto: admin@awardjacob.me">
+                ✉ Email
+            </a>
+            <br> <br>
+            <a href="tel:+254748199786">
+                📞 Call
+            </a>
+
+        </div>
+
+        <!-- social media vertical -->
+        <div id="social_media_horizontal">
+            <a href="">
+                <div>
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                    <span>Facebook</span>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                    <span>Twitter</span>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                    <span>Instagram</span>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <!-- whatsapp -->
+                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                    <span>Whatsapp</span>
+                </div>
+            </a>
+
+        
+    </div>
+
+
+    <div id="copyright">
+    </div>
+    <script>
+        var copy_date = new Date()
+        var year = copy_date.getFullYear()
+
+        document.getElementById("copyright").innerHTML = 
+            "Copyright Jacob " + year + " | All rights reserved." 
+    </script>
+</footer>
+</html>

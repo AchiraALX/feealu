@@ -1,0 +1,1 @@
+web: gunicorn fees_ALU.wsgi

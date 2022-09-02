@@ -1,0 +1,115 @@
+{% extends 'index.html' %}
+{% block content %}
+
+        <div class="w3-margin container" id="intro">
+            <div style="display: flex; position: relative;" id="cheshire_and_heythere_container">
+                <div id="cheshire_cat">
+                    <img src="http://static1.wikia.nocookie.net/__cb20110816105658/disney/images/e/e1/Cheshire_Cat_KHREC.png" alt="Cheshire Cat">
+                </div>
+                <div style="width: 100%; height: 100%;">
+                    <h3 class="w3-opacity" style="text-align: center; transform: translateY(-50%)" id="hey_there">
+                        <em>
+                        </em>
+                    </h3>
+                </div>
+            </div>
+            
+            <script>
+                /* display hey_there leters one by one */
+                var hey_there = document.getElementById("hey_there");
+                var hey_there_text = "Hey there!";
+                var i = 0;
+                var hey_there_interval = setInterval(function(){
+                    hey_there.innerHTML += hey_there_text[i];
+                    i++;
+                    if(i == hey_there_text.length){
+                        clearInterval(hey_there_interval);
+                    }
+                }, 200);
+                
+                </script>
+                
+            <div class="container w3-margin">
+                <p class="w3-margin other_content" style="word-spacing: 3px; letter-spacing: 1px; line-height: 30px; margin: 0 auto;">
+                    <em>
+                       <b> My name is Jacob. I am a self-taught developer and I am currently learning Python.</b>
+                    </em>
+                    Pursuing in the field of  software development, and working on projects that are useful to the community has been
+                    my ambition since I was in high school. Unfortunately after graduating from high school, I was enrolled in the school of education.
+                    That didn't stop me from pursuing my dream of becoming a software developer. I went down the rabbit hole and started learning HTML & CSS3.
+                    I used the free online tutorial site <a href="https://www.w3schools.com/" target="_blank">w3schools.com</a> to learn the basics of HTML & CSS3. I then moved onto learning Python
+                    and later on Django.
+                    <br><br>
+                    Doing this, I have developed a strong foundation in programming and have gained a good understanding of the fundamentals of programming.
+                    And it has helped me to develop a strong passion for programming. So, to break from the bulk of the tutorials, I decided to apply for a bachelor's degree in software Engineering.
+
+
+                    <br><br>
+
+                    <tt>
+                        <b>
+                            On <date>July 2022</date> I applied to African Leadership University (ALU) and I got accepted. I also applied for a scholarship and luckily
+                            I manged to get a <currency>$2ooo</currency> worth schorlaship waived against <currency>$3000</currency> which
+                            is their tution fees.
+                        </b>
+                    </tt>
+
+                    <br><br>
+
+                    My initial approved intake was <date>Septemper 2022</date>. Following that I had applied just two months before, it was too
+                    soon for me considering my financial preperation and so I had to make a defferal until <date>January 2023</date> believing
+                    that by then I would have enlighted some weigh down.
+
+
+                </p>
+
+                <script>
+                    /* toggle other_content class */
+                    setTimeout(function(){
+                        var other_content = document.getElementsByClassName("other_content");
+                        other_content[0].classList.toggle("other_content1");
+                        /* display block */
+                        other_content[0].style.display = "block";
+                    }, 2000);
+
+                </script>
+
+            </div>
+        </div>
+
+        <div class="container w3-padding w3-margin" id="money_channels_main_cont">
+
+            <div class="container money_channels_main_subcont">
+                <div>
+                    M-Pesa
+                </div>
+                <div>
+                    Bank Account
+                </div>
+            </div>
+
+            <div class="container money_channels_main_subcont">
+                <div>
+                    PayPal
+                </div>
+                <div>
+                    Western Union.
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="container w3-margin" style="color: rgb(121, 113, 0);">
+
+            <a href="mailto: admin@awardjacob.me">
+                ✉ Email
+            </a>
+            <br><br>
+            <a href="tel:+254748199786">
+                📞 Call
+            </a>
+
+        </div>
+
+{% endblock %}

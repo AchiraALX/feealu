@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+{% block content %}
+
+    <div id="community_welcome">
+        <div id="comm_hi">
+            <img src="https://cdn-icons-png.flaticon.com/512/774/774451.png" alt="">
+        </div>
+        <div id="community_welcome_message">
+            <h1>Welcome to the community.</h1>
+            <br>
+            <em>Your thought is highly appreciated.</em>
+        </div>
+    </div>
+
+    <br> <br>
+    <hr class="divide" >
+
+    <div id="community_body">
+        
+        <button id="community_comment_btn">
+            Talk to the community.
+        </button>
+
+        <div id="comment_text_area">
+
+            <form action="addcomment/" method="post">
+                {% csrf_token %}
+                <!-- author input -->
+                <br>
+                <input type="text" name="author" placeholder="Your name" required> <br><br>
+                <textarea name="comment" id="comment_body" rows="5" placeholder="Start typing....." required></textarea>
+                <br>
+                <br>
+                <button type="submit">Send</button>
+            </form>
+
+        </div>
+        <br><br><br>
+        <div id="community_comments">
+            <div id="community_comments_header">
+                <fieldset style="outline: none; border: none;">
+                    <legend>
+                        <h1>Community Comments</h1>
+                    </legend>
+                </fieldset>
+            </div>
+
+            <br><br>
+            
+        {% for comment in comments %}
+            <div id="community_comment">
+                <div id="community_comment_body" style="margin: 0px 50px;">
+                    <fieldset id="m_content">
+                        <legend id="author_name">
+                            <em> ~ {{ comment.author }} </em> 
+                        </legend>
+                        <p> {{ comment.content }}</p>
+                    </fieldset>
+                    <br>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    <!-- red button -->
+    <button type="reset">
+        <i class="fa fa-times"></i> Clear
+    </button>
+
+
+
+
+{% endblock %}
