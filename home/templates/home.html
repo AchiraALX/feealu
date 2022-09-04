@@ -1,17 +1,24 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
 
-        <div class="w3-margin container" id="intro">
-            <div style="display: flex; position: relative;" id="cheshire_and_heythere_container">
-                <div id="cheshire_cat">
-                    <img src="http://static1.wikia.nocookie.net/__cb20110816105658/disney/images/e/e1/Cheshire_Cat_KHREC.png" alt="Cheshire Cat">
-                </div>
-                <div style="width: 100%; height: 100%;">
-                    <h3 class="w3-opacity" style="text-align: center; transform: translateY(-50%)" id="hey_there">
-                        <em>
-                        </em>
-                    </h3>
-                </div>
+            <div id="home_title_cont">
+            <img src="https://jacobsa.w3spaces.com/LagoBraies_ROW2522700379_1366x768.jpg" alt="Neat Ocean" style="opacity: .5;">
+            <div style="position: absolute; width: 100%; height: 100%; top: 20px; left: 0;">
+            <h3 id="hey_there">
+                <em>
+                </em>
+            </h3>
+
+            <div  id="cheshire_and_heythere_container">
+                <svg width="100%" height="200" style="align-items: center ">
+                    <text x="40" y="90" stroke="honeydew" fill="none" stroke-width="3" stroke-dasharray="0,0"
+                    style="font-size: 60px; font-weight: 900s;">
+                    <animate attributeName="stroke-dasharray" from="0,1100" to="1100,0" dur="6s" />
+                    Welcome.</text>
+                </svg>
+            </div>
+            </div>
             </div>
             
             <script>
@@ -28,11 +35,13 @@
                 }, 200);
                 
                 </script>
-                
-            <div class="container w3-margin">
-                <p class="w3-margin other_content" style="word-spacing: 3px; letter-spacing: 1px; line-height: 30px; margin: 0 auto;">
+
+                <br>
+
+                <div id="home_body">
+                <p class="other_content" style="word-spacing: 3px; letter-spacing: 1px; line-height: 30px; margin: 0 auto;">
                     <em>
-                       <b> My name is Jacob. I am a self-taught developer and I am currently learning Python.</b>
+                       <b>Hey!🖐 My name is Jacob. I am a self-taught developer and I am currently learning Python.</b>
                     </em>
                     Pursuing in the field of  software development, and working on projects that are useful to the community has been
                     my ambition since I was in high school. Unfortunately after graduating from high school, I was enrolled in the school of education.
@@ -60,9 +69,70 @@
                     soon for me considering my financial preperation and so I had to make a defferal until <date>January 2023</date> believing
                     that by then I would have enlighted some weigh down.
 
+                    <br> <br>
+
+                    <b>
+                        I developed this application specifically for the same reason, to get a financial boost and to connect. Get the hand 
+                        that I need in managing the expenses and any advice that might help. Do not hesitate to share your thought; if there is 
+                        any about this approach or any other concern that you think would be good for me. Visit my <a href="{% url 'comm' %}">community</a>
+                        page and leave your thought. 
+                        <br> <br>
+                        <p style="text-align: center; width: 100%">
+                            <i><code>For feedback or any query you can reach out my private
+                            <a href="mailto: dn@givej.live">mail</a>.</i> &nbsp; <a href="{% url 'about' %}">More about me</a> </code></p>
+                    </b>
+
 
                 </p>
 
+                <br>
+
+                <div id="expenses">
+                    <h3>
+                        The expenses are:
+                    </h3>
+                    <div class="expenses">
+                        <dfn> <span class="dot">&nbsp;&nbsp;</span>&nbsp;<currency>$500</currency> Place Reservation Fee</dfn> 
+                        <p>
+                            They require that for every student who gets admitted pays a one time non-refundable place Reservation fee That
+                            amounts to <currency>$500</currency> before the actual date of admission.
+                        </p>
+                    </div>
+                    <div class="expenses">
+                        <dfn> <span class="dot">&nbsp;&nbsp;</span>&nbsp;<currency>$1000</currency> Tution</dfn> 
+                        <p>
+                            ALU's annual tution fee is <currency>$3000</currency> but I managed a <currency>$2000</currency> worth of community 
+                            scholarship that will applied on the tution annually. And so, it remained only <currency>$1000</currency> which also
+                            am supposed to clear before the actual day of admission.
+                        </p>
+                    </div>
+                    <div class="expenses">
+                        <dfn> <span class="dot">&nbsp;&nbsp;</span>&nbsp;<currency>$250</currency> Accomodation</dfn> 
+                        <p>
+                            ALU's provided accomodation is <currency>$250</currency> per month.
+                        </p>
+                    </div>
+                    <div class="expenses">
+                        <dfn> <span class="dot">&nbsp;&nbsp;</span>&nbsp;<currency>$600</currency> Plane Ticket</dfn> 
+                        <p>
+                            A two-way plane ticket from Nairobi to Kigali is around <currency>Ksh. 70,000</currency>
+                        </p>
+                    </div>
+                    <div class="expenses">
+                        <dfn> <span class="dot">&nbsp;&nbsp;</span>&nbsp;<currency>$700</currency> Laptop</dfn> 
+                        <p>
+                            For every Software Engineering student, having a laptop/desktop is a great deal. It has everything
+                            to do with the entire course's ease and success.
+                        </p>
+                    </div>
+
+                    <p>
+                        From the above budget, I am required to must have at least <currency>$3050 (Ksh. 366,915)</currency> to ensure 
+                        a fine start on the course. Compared to my setting, that amount is quiet and so I seek assistance.
+                    </p>
+                </div>
+
+                <!--
                 <script>
                     /* toggle other_content class */
                     setTimeout(function(){
@@ -73,43 +143,63 @@
                     }, 2000);
 
                 </script>
-
-            </div>
-        </div>
-
-        <div class="container w3-padding w3-margin" id="money_channels_main_cont">
-
-            <div class="container money_channels_main_subcont">
-                <div>
-                    M-Pesa
+            -->
+                
+                <div style="text-align: center; margin: 50px 0px 25px 0px;">
+                    <paymenttitle>Use the following Methods</paymenttitle>
                 </div>
-                <div>
-                    Bank Account
-                </div>
-            </div>
 
-            <div class="container money_channels_main_subcont">
-                <div>
-                    PayPal
-                </div>
-                <div>
-                    Western Union.
-                </div>
+            <div>
+                <details>
+                    <summary>M-Pesa<span>...</span></summary>
+                    <p>
+                        This is the M-Pesa details. 
+                    </p>
+                </details>
+                <details>
+                    <summary>Bank<span>...</span></summary>
+                    <p>
+                        This would be the bank details....  
+                    </p>
+                </details>
             </div>
 
-        </div>
+            <div>
+                <details>
+                    <summary>
+                        PayPal <span>...</span>
+                    </summary>
+                    <p>
+                        Paypal Payment method details..... 
+                    </p>
+                </details>
+                <details>
+                    <summary>Other Methods<span>...</span></summary>
+                    <p>
+                        This will include more paying Methods.
+                    </p>
+                </details>
+            </div>
 
-
-        <div class="container w3-margin" style="color: rgb(121, 113, 0);">
+        <div id="contact" >
+            <div style="text-align: center;">
+                <paymenttitle>Get in touch.</paymenttitle>
+            </div>
+            <br>
+            <br>
 
             <a href="mailto: admin@awardjacob.me">
-                ✉ Email
+                📤&nbsp; admin@awardjacob.me
             </a>
-            <br><br>
             <a href="tel:+254748199786">
-                📞 Call
+                📞  +254748199786
             </a>
+            <br>
+            <br>
 
         </div>
+
+    </div>
+    <br>
 
 {% endblock %}
