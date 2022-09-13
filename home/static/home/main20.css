@@ -5,22 +5,24 @@
 body, html {
 
     margin: 0 auto;
+    padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: aliceblue;
+    width: 100%;
+    background-color: rgb(246, 248, 252);
     color: grey;
     /* font-family: 'Roboto', sans-serif; */
     font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
 }
 #body {
     margin-top: 60px;
-    border-color: aliceblue;
+    width: 100%;
 }
 
 main {
     flex: 1 0 auto;
-    background-color: rgb(238, 243, 252);
 }
 header {
     position: fixed;
@@ -52,7 +54,7 @@ header > a, header > div > a {
     font-weight: 600;
 }
 a:hover {
-    font-weight: 800;
+    font-weight: 600;
 }
 header > a:hover, header > div > a:hover {
     color: rgba(45, 45, 45, 1);
@@ -184,9 +186,12 @@ button {
 }
 #community_welcome {
     position: relative;
-    margin-top: 80px;
-    height: 300px;
+    height: 400px;
     overflow-y: hidden;
+    background-image: url(cas.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 #community_welcome > img {
     transform: translateY(-30%);
@@ -205,15 +210,16 @@ button {
 }
 #community_welcome_message {
     padding: 40px 20px;
-    width: 100%;
+    width: fit-content;
     text-align: justify;
     text-align: center;
     position: absolute;
-    height: 100%;
-    top: 0;
-    left: 0;
-    color: bisque;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #154;
     font-weight: 1000;
+    font-size: 180%;
 }
 
 ::-webkit-scrollbar {
@@ -250,9 +256,10 @@ textarea {
     border: 1px solid grey;
 }
 #comment_text_area {
-    padding: 10px;
-    display: none;
+    max-height: 0;
+    overflow-y: hidden;
     text-align: center;
+    padding: 0px 10px;
 }
 #comment_body {
     width: 100%;
@@ -364,7 +371,7 @@ details {
     margin: 0 auto;
 }
 summary {
-    width: 100%;
+    width: 30%;
     cursor: pointer;
     padding: 15px;
     font-weight: 800;
@@ -401,22 +408,16 @@ paymenttitle {
     animation: slide_up .8s linear forwards;
 }
 #home_title_cont {
-    height: 300px;
+    height: 400px;
     overflow-y: hidden;
     position: relative;
+    background-image: url(dotted.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 #home_title_cont > img {
     transform: translateY(-40%);
-}
-@keyframes slide_up {
-    0% {
-        transform: translateY(50%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0%);
-        opacity: 1;
-    }
 }
 #contact {
     width: 100%;
@@ -458,6 +459,7 @@ dfn {
 }
 .expenses > p {
     padding: 0px 15px;
+    text-align: justify;
 }
 .dot {
     height: 3px;
@@ -469,18 +471,41 @@ dfn {
 currency {
     font-weight: bold;
 }
+#hey_there_cont {
+    position: absolute; 
+    width: 100%; 
+    height: auto; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+#community_comment_body {
+    margin: 0px 50px;
+}
 /* media queries */
 @media screen and (max-width: 800px) {
     /* hide community button */
     #community_btn {
-        display: none;
+        max-height: 0;
+        flex-direction: column;
+        overflow-y: hidden;
         position: fixed;
         width: 100%;
-        top: 100px;
+        top: 110px;
         left: 0;
         background-color: inherit;
         text-align: right;
-        padding: 10px 20px;
+        padding-right: 20px;
+    }
+    #community_btn > a:first-child {
+        margin-top: 15px;
+    }
+    #community_btn > a {
+        margin: 5px 0px;
+    }
+    #community_btn > a:hover {
+        font-weight: 600;
     }
     #d_arrow {
         display: block;
@@ -497,6 +522,9 @@ currency {
     #community_comment_btn {
         border-radius: 0px;
     }
+    #community_comment {
+        width: 100%;
+    }
     #cheshire_cat {
         width: 200px;
         height: 200px;
@@ -507,15 +535,17 @@ currency {
     }
     .other_content {
         width: 100%;
+        border-radius: 0px;
     }
     #hey_there {
-        font-size: 55px;
+        font-size: 40px;
+        width: 100%;
     }
     #home_body {
         width: 98%;
     }
     #home_title_cont, #community_welcome {
-        height: 250px;
+        height: 350px;
     }
     #home_title_cont > img, #community_welcome > img {
         transform: translate(0%);
@@ -523,5 +553,46 @@ currency {
     #contact > a {
         display: flex;
         flex-direction: column;
+    }
+    #m_content {
+        width: 100%;
+        margin: 0 auto;
+    }
+    header {
+        width: 100vw;
+        position: fixed;
+    }
+    #copyright {
+        font-size: 70%;
+    }
+    #social_media_horizontal {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        margin: 0 auto;
+        text-align: justify;
+        font-family: monospace;
+    }
+    #social_media_horizontal > a {
+        padding: 10px;
+        width: 100%;
+        transition-duration: 0ms;
+    }
+    .right_hung {
+        float: right;
+    }
+    #community_comment_body {
+        margin: 0px auto;
+    }
+    #community_comment {
+        padding: 2px;
+    }
+    #commm {
+        font-size: 70%;
+        color: #154;
+    }
+    #community_welcome_message {
+        font-size: 120%;
+        width: 100%;
     }
 }

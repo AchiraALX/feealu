@@ -8,22 +8,16 @@
     <!--- favicon -->
     <link rel="icon" href="https://jacobsa.w3spaces.com/favicon.png">
     <link rel="shortcut icon" href="{% static 'images/favicon1.png' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'home/main15.css' %}">
-    <link rel="stylesheet" href="https://jacobsa.w3spaces.com/main15.css">
+    <link rel="stylesheet" href="{% static 'home/main20.css' %}">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <!-- w3schools css-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--- font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <!--- owl carousel -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
     <title>Award Jacob Website</title>
 </head>
 <header id="header">
@@ -51,10 +45,22 @@
         </div>
             <button id="d_arrow">
                 <!-- down arrow -->
-                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <i class="fa fa-angle-down" aria-hidden="true"></i> Toggle.
             </button>
 
         <script>
+
+            var btt = document.getElementById("d_arrow")
+            btt.addEventListener("click", () => {
+                var menu = document.getElementById("community_btn");
+                if (menu.style.maxHeight) {
+                    menu.style.maxHeight = null;
+                }
+                else {
+                    menu.style.maxHeight = menu.scrollHeight + "px"
+                }
+            })
+
             /* show community button > 600px */
             $(window).resize(function(){
                 if($(window).width() > 800){
@@ -87,120 +93,6 @@
 
         </script>
 </header>
-<script>
-    var prev_scroll_pos = window.pageYOffset;
-    window.onscroll = function () {
-        var current_scroll_pos = window.pageYOffset;
-        if (prev_scroll_pos > current_scroll_pos) {
-            document.getElementById("header").style.boxShadow = "0px 0px 0px 0px rgb(0, 0, 0)";
-        }
-        else {
-            document.getElementById("header").style.boxShadow = "0px 0px 8px 0px rgb(0, 0, 0)"
-        }
-
-        prev_scroll_pos = current_scroll_pos;
-    }
-</script>
-<main>
-    <canvas id="canvas">
-        <script>
-                var canvas = document.getElementById("canvas");
-                canvas.style.zIndex = "-1"
-                /* position: fixed; */
-                canvas.style.position = "fixed"
-                
-                /* set canvas height and width */
-                canvas.height = 250;
-                canvas.width = 250;
-
-                /* scaling the canvas by 1.6 */
-                canvas.style.transform = "scale(0.3)"
-
-                /* center canvas */
-                canvas.style.bottom = "5%";
-                canvas.style.left = "50%";
-                canvas.style.transform = "translate(-50%, -50%)"
-
-                /* set canvas opacity */
-                canvas.style.opacity = "0.1";
-
-                var ctx = canvas.getContext("2d");
-                var radius = canvas.height / 2;
-                ctx.translate(radius, radius);
-                radius = radius * 0.90
-                setInterval(drawClock, 1000);
-                function drawClock() {
-                    drawFace(ctx, radius);
-                    drawNumbers(ctx, radius);
-                    drawTime(ctx, radius);
-                    drawHand(ctx, pos, length, width);
-                }
-                function drawFace(ctx, radius) {
-                    var grad;
-                    ctx.beginPath();
-                    ctx.arc(0, 0, radius, 0, 2*Math.PI);
-                    ctx.fillStyle = 'white';
-                    ctx.fill();
-                    grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
-                    grad.addColorStop(0, '#333');
-                    grad.addColorStop(0.5, 'white');
-                    grad.addColorStop(1, '#333');
-                    ctx.strokeStyle = grad;
-                    ctx.lineWidth = radius*0.1;
-                    ctx.stroke();
-                    ctx.beginPath();
-                    ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
-                    ctx.fillStyle = '#333';
-                    ctx.fill();
-                }
-                function drawNumbers(ctx, radius) {
-                    var ang;
-                    var num;
-                    ctx.font = radius*0.15 + "px arial";
-                    ctx.textBaseline="middle";
-                    ctx.textAlign="center";
-                    for(num = 1; num < 13; num++){
-                        ang = num * Math.PI / 6;
-                        ctx.rotate(ang);
-                        ctx.translate(0, -radius*0.85);
-                        ctx.rotate(-ang);
-                        ctx.fillText(num.toString(), 0, 0);
-                        ctx.rotate(ang);
-                        ctx.translate(0, radius*0.85);
-                        ctx.rotate(-ang);
-                    }
-                }
-                function drawTime(ctx, radius){
-                    var now = new Date();
-                    var hour = now.getHours();
-                    var minute = now.getMinutes();
-                    var second = now.getSeconds();
-                    //hour
-                    hour=hour%12;
-                    hour=(hour*Math.PI/6)+
-                    (minute*Math.PI/(6*60))+
-                    (second*Math.PI/(360*60));
-                    drawHand(ctx, hour, radius*0.5, radius*0.07);
-                    //minute
-                    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
-                    drawHand(ctx, minute, radius*0.8, radius*0.07);
-                    // second
-                    second=(second*Math.PI/30);
-                    drawHand(ctx, second, radius*0.9, radius*0.02);
-                }
-                function drawHand(ctx, pos, length, width) {
-                    ctx.beginPath();
-                    ctx.lineWidth = width;
-                    ctx.lineCap = "round";
-                    ctx.moveTo(0,0);
-                    ctx.rotate(pos);
-                    ctx.lineTo(0, -length);
-                    ctx.stroke();
-                    ctx.rotate(-pos);
-                }
-        </script>
-    </canvas>
-    <script>
 
 
     </script>
@@ -216,18 +108,7 @@
 
     </body>
 </main>
-<script>
-    $(document).ready(function(){
-        $("#d_arrow").click(function(){
-            
-            $("#community_btn").slideToggle();
-        });
-        $("#community_comment_btn").click(function(){
-            /* smooth toggling of comment_text_area */
-            $("#comment_text_area").slideToggle();
-        });
-    });
-</script>
+
 <footer>
     <div id="footer_body">
 
@@ -247,26 +128,26 @@
             <a href="">
                 <div>
                     <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                    <span>Facebook</span>
+                    <span class="right_hung">Facebook</span>
                 </div>
             </a>
             <a href="">
                 <div>
                     <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                    <span>Twitter</span>
+                    <span class="right_hung">Twitter</span>
                 </div>
             </a>
             <a href="">
                 <div>
                     <i class="fa fa-instagram" aria-hidden="true"></i>
-                    <span>Instagram</span>
+                    <span class="right_hung">Instagram</span>
                 </div>
             </a>
             <a href="">
                 <div>
                     <!-- whatsapp -->
                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
-                    <span>Whatsapp</span>
+                    <span class="right_hung">Whatsapp</span>
                 </div>
             </a>
 

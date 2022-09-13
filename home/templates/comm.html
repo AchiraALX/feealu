@@ -3,9 +3,8 @@
 {% block content %}
 
     <div id="community_welcome">
-        <img src="https://jacobsa.w3spaces.com/LagoBraies_ROW2522700379_1366x768.jpg" alt="Neat Ocean" style="opacity: .5;">
         <div id="community_welcome_message">
-            <h1>Welcome to the community.</h1>
+            <h1 style="mix-blend-mode: screen;">Welcome to the community.</h1>
             <br>
             <em>Your thought is highly appreciated.</em>
         </div>
@@ -34,21 +33,31 @@
             </form>
 
         </div>
-        <br><br><br>
+        <script>
+            var comm = document.getElementById("community_comment_btn");
+            comm.addEventListener("click", ()=> {
+                var comm_form = document.getElementById("comment_text_area");
+                if (comm_form.style.maxHeight) {
+                    comm_form.style.maxHeight = null;
+                }
+                else {
+                    comm_form.style.maxHeight = comm_form.scrollHeight + "px"
+                }
+            })
+        </script>
+        <br><br>
         <div id="community_comments">
             <div id="community_comments_header">
                 <fieldset style="outline: none; border: none;">
-                    <legend>
+                    <legend id="commm">
                         <h1>Community Comments</h1>
                     </legend>
                 </fieldset>
             </div>
-
-            <br><br>
             
         {% for comment in comments %}
             <div id="community_comment">
-                <div id="community_comment_body" style="margin: 0px 50px;">
+                <div id="community_comment_body">
                     <fieldset id="m_content">
                         <legend id="author_name">
                             <em> ~ {{ comment.author }} </em> 
