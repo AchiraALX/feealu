@@ -34,6 +34,25 @@
                 color: white;
                 text-align: center;
             }
+
+            #days {
+                font-size: 30px;
+                font-weight: 800;
+            }
+            #coming_soon {
+                font-size: 50px;
+                text-align: center;
+                font-weight: 800;
+            }
+
+            @media only screen and (max-width: 700px) {
+                #days {
+                    font-size: 20px;
+                }
+                #coming_soon {
+                    font-size: 30px;
+                }
+            }
         </style>
     </head>
 <body>
@@ -43,7 +62,7 @@
             award_jacob.me
         </div>
         <div class="w3-display-middle">
-            <h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>
+            <h1 class="w3-animate-top" id="coming_soon">COMING SOON</h1>
             <hr class="w3-border-grey" style="margin:auto;width:40%">
             <p class="w3-center" id="days"></p>
             <script>
@@ -58,10 +77,6 @@
                     document.getElementById("days").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
                     
                 }, 1000);
-
-                var time_count = document.getElementById("days");
-                time_count.style.fontSize = "50px";
-                time_count.style.fontWeight = "800";
             </script>
         </div>
     </div>
