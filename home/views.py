@@ -41,4 +41,11 @@ def about(request):
     template = loader.get_template('about.html')
 
     return HttpResponse(template.render({}, request))
+
+
+def comingsoon(request):
+    template = loader.get_template('comingsoon.html')
+
+    return HttpResponse(template.render({}, request))
+
 # Create your views here.
